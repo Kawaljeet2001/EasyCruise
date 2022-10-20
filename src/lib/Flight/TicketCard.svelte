@@ -11,8 +11,8 @@
 			<div class="rounded-lg bg-white p-4 col-span-1 flex flex-col" />
 			<div class="rounded-lg bg-lightBlue p-4 col-span-5 flex flex-col">
 				<p class="text-sm text-gray-400">To</p>
-				<input class="text-xl font-semibold mt-1.5 bg-transparent outline-none" value="Delhi" />
-				<p class="text-sm text-gray-400">DEL, India Gandhi Int"l Airport</p>
+				<input class="text-xl font-semibold mt-1.5 bg-transparent outline-none" value="Mumbai" />
+				<p class="text-sm text-gray-400">BOM, Chhatrapati Shivaji Int"l Airport</p>
 			</div>
 		</div>
 
