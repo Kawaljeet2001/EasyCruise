@@ -8,7 +8,8 @@ module.exports = {
 				yellow1: '#ff9d0d',
 				gray1: '#f3f4f5',
 				peach1: '#fff6e7',
-				green1: '#007c5b'
+				green1: '#007c5b',
+				orange1 : "#ed5b26"
 			},
 			borderRadius: {
 				roundedBg: '80%',
@@ -22,6 +23,7 @@ module.exports = {
 				'30v': '30vh',
 				'40v': '40vh',
 				'45v': '45vh',
+				'60v': '60vh',
 				'70v': '70vh',
 				'80v': '80vh'
 			},

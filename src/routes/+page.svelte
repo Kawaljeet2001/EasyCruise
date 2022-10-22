@@ -1,5 +1,6 @@
 <script>
-	import TicketCard from '../lib/Flight/TicketCard.svelte';
+	import LoginCard from '../lib/Auth/LoginCard.svelte';
+import TicketCard from '../lib/Flight/TicketCard.svelte';
 </script>
 
 <main class="bg-gray1 min-h-screen flex flex-col items-center justify-center ">

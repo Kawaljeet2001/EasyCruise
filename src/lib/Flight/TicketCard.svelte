@@ -30,7 +30,7 @@
 	</div>
 	<div class="grid grid-cols-12 gap-x-2 w-full pt-4 justify-end">
 		<div class="col-span-8" />
-		<button class="col-span-4 rounded-lg bg-yellow1 text-white font-bold flex justify-center p-3"
+		<button class="col-span-4 rounded-lg bg-orange1 text-white font-bold flex justify-center p-3"
 			>Search</button
 		>
 	</div>
