@@ -9,13 +9,15 @@ module.exports = {
 				gray1: '#f3f4f5',
 				peach1: '#fff6e7',
 				green1: '#007c5b',
-				orange1 : "#ed5b26"
+				orange1 : "#ed5b26",
+				orange2 : "#ec5b24"
 			},
 			borderRadius: {
 				roundedBg: '80%',
 				r50: '50%'
 			},
 			height: {
+				'1v' : "2px",
 				'10v': '10vh',
 				'12v': '12vh',
 				'15v': '15vh',
