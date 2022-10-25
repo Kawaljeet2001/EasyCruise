@@ -1,8 +1,5 @@
 <script>
-	export let title;
-	export let sectionNumber;
-	export let isActive;
-    export let titleDesc;
+	export let title, sectionNumber, isActive, titleDesc;
 </script>
 
 <div class="flex items-center">
@@ -13,10 +10,12 @@
 	>
 		{sectionNumber}
 	</div>
-    <div class="flex flex-col">
-	<h3 class=" {isActive ? 'text-3xl font-bold' : 'text-2xl font-light text-gray-400'}">{title}</h3>
-    {#if isActive && titleDesc}
-        <p class="text-xs mt-2 text-gray-500">{titleDesc}</p>
-    {/if}
-</div>
+	<div class="flex flex-col">
+		<h3 class=" {isActive ? 'text-3xl font-bold' : 'text-2xl font-light text-gray-400'}">
+			{title}
+		</h3>
+		{#if isActive && titleDesc}
+			<p class="text-xs mt-2 text-gray-500">{titleDesc}</p>
+		{/if}
+	</div>
 </div>

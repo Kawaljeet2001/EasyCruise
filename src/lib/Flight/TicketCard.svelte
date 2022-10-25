@@ -1,5 +1,4 @@
 <script>
-	let refreshed = false;
 	const parseDateUtil = (departureDate, toReturn) => {
 		const dateField = new Date(departureDate);
 		const date = dateField.getDate();
@@ -17,7 +16,7 @@
 		departureDate: new Date().toISOString().split('T')[0]
 	};
 
-	let flightRedirectString = `/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}`;
+	 let flightRedirectString = `/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}`;
 </script>
 
 <div class="bg-white w-full p-8 rounded-3xl shadow-lg flex flex-col">
@@ -78,7 +77,7 @@
 			</select>
 		</div>
 		<a
-			href={flightRedirectString}
+			href={`/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}`}
 			class="col-span-4 rounded-lg bg-orange1 text-white font-bold flex justify-center p-3"
 			>Search</a
 		>

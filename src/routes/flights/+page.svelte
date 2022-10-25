@@ -4,21 +4,13 @@
 	import LoaderFullscreen from '$lib/Loader/LoaderFullscreen.svelte';
 	import { onMount } from 'svelte';
 	import CheapestFareCard from '../../lib/Flights/FlightJourney/CheapestFareCard.svelte';
+	import {setFlightDetailsToLocalStorage} from "../../utils/localStorge.svelte";
 
 	export let data;
 	const { params } = data;
 	let loadPage = false;
 
 	let availableFlights = [];
-	const setFlightDetails = () => {
-		let flightDetails = {};
-		flightDetails['from'] = params.get('from');
-		flightDetails['to'] = params.get('to');
-		flightDetails['depart_date'] = params.get('depart_date');
-		flightDetails['class'] = params.get('class');
-
-		localStorage.setItem('flightDetails', JSON.stringify(flightDetails));
-	};
 	const getFlights = async () => {
 		try {
 			const res = await axios.get('http://localhost:5000/api/flights');
@@ -30,7 +22,7 @@
 	};
 	onMount(async () => {
 		//storing the parameters in localstorage
-		setFlightDetails();
+		setFlightDetailsToLocalStorage(params);
 		await getFlights();
 	});
 </script>
