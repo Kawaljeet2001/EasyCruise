@@ -38,6 +38,10 @@
 		data = parseTravellerData(data);
 		saveDetails({ travellers: data });
 		completeCurrentSection();
+
+		setTimeout(() => {
+			window.location.href = "/payment";
+		},1500)
 	};
 </script>
 

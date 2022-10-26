@@ -1,14 +1,12 @@
 <script>
 	export let data;
+	const {params} = data;
 	import { onMount } from 'svelte';
 	import ContactDetailsSection from '$lib/Flights/Itinerary/ContactDetailsSection.svelte';
 	import TravellerDetailsSection from '$lib/Flights/Itinerary/TravellerDetailsSection.svelte';
 	import ReviewDetailsSection from '$lib/Flights/Itinerary/ReviewDetailsSection.svelte';
-	import { setFlightId } from '../../../utils/localStorge.svelte';
 	import LoaderFullscreen from '../../../lib/Loader/LoaderFullscreen.svelte';
-	import { bind } from 'svelte/internal';
 
-	const { params } = data;
 	let numberOfTravellers = 1;
 	let flightDetails = null;
 	let activeSection = 'review';
