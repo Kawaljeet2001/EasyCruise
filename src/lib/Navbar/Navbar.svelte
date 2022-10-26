@@ -1,14 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
-	import LoginCard from '../Auth/LoginCard.svelte';
-
-	//states
-	let openLoginCard = false;
-
-	const toggleOpenLoginCard = () => {
-		openLoginCard = !openLoginCard;
-	};
-
 	let isVisible = true;
 </script>
 
@@ -17,10 +7,7 @@
 		<div class="flex items-center justify-between">
 			<a class="mx-4 text-lg" href="/">Flights</a>
 			<a class="mx-4 text-lg" href="/support">Support</a>
-			<button type="button" class="mx-4 text-lg" on:click={toggleOpenLoginCard}>Login</button>
+			<a class="mx-4 text-lg" href="/signin">Signin</a>
 		</div>
-		{#if openLoginCard}
-			<LoginCard toggle={() => toggleOpenLoginCard()} />
-		{/if}
 	</nav>
 {/if}

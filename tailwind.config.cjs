@@ -9,15 +9,15 @@ module.exports = {
 				gray1: '#f3f4f5',
 				peach1: '#fff6e7',
 				green1: '#007c5b',
-				orange1 : "#ed5b26",
-				orange2 : "#ec5b24"
+				orange1: '#ed5b26',
+				orange2: '#ec5b24'
 			},
 			borderRadius: {
 				roundedBg: '80%',
 				r50: '50%'
 			},
 			height: {
-				'1v' : "2px",
+				'1v': '2px',
 				'10v': '10vh',
 				'12v': '12vh',
 				'15v': '15vh',
@@ -29,6 +29,9 @@ module.exports = {
 				'60v': '60vh',
 				'70v': '70vh',
 				'80v': '80vh'
+			},
+			boxShadow: {
+				shadow1: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'
 			},
 			margin: {}
 		}

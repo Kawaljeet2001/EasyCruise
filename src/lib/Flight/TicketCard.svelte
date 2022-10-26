@@ -13,10 +13,9 @@
 		from: 'Delhi',
 		to: 'Mumbai',
 		class: 'Economy',
-		departureDate: new Date().toISOString().split('T')[0]
+		departureDate: new Date().toISOString().split('T')[0],
+		adults: 1
 	};
-
-	 let flightRedirectString = `/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}`;
 </script>
 
 <div class="bg-white w-full p-8 rounded-3xl shadow-lg flex flex-col">
@@ -65,20 +64,36 @@
 		</div> -->
 	</div>
 	<div class="grid grid-cols-12 gap-x-2 w-full pt-4 justify-end">
-		<div class="col-span-8 grid grid-cols-10">
+		<div class="col-span-8 grid grid-cols-11 gap-x-2">
 			<select
 				bind:value={ticketInput.class}
 				name="class"
-				class="bg-lightBlue px-3 rounded-lg col-span-2 flex items-center justify-center font-semibold"
+				class="bg-lightBlue px-3 rounded-lg col-span-3 flex items-center justify-center font-semibold"
 			>
 				<option value="Economy">Economy</option>
 				<option value="Business">Business</option>
 				<option value="Executive">Executive</option>
 			</select>
+			<div
+				class="flex items-center justify-center bg-lightBlue rounded-lg col-span-2 relative px-3 h-full"
+			>
+				<select
+					bind:value={ticketInput.adults}
+					name="class"
+					class=" font-semibold bg-transparent w-full"
+				>
+					{#each Array(9) as item, index}
+						<option value={index + 1}>{index + 1}</option>
+					{/each}
+				</select>
+				<p class="absolute top-1/4 left-1/4 font-semibold text-black z-20">
+					Adult{#if ticketInput.adults > 1}s{/if}
+				</p>
+			</div>
 		</div>
 		<a
-			href={`/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}`}
-			class="col-span-4 rounded-lg bg-orange1 text-white font-bold flex justify-center p-3"
+			href={`/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}&adults=${ticketInput.adults}`}
+			class="col-span-4 rounded-lg bg-orange1 hover:bg-orange-700 text-white font-bold flex justify-center p-3"
 			>Search</a
 		>
 	</div>

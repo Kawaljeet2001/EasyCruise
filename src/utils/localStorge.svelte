@@ -5,6 +5,7 @@
 		flightDetails['to'] = params.get('to');
 		flightDetails['depart_date'] = params.get('depart_date');
 		flightDetails['class'] = params.get('class');
+		flightDetails['numOfTravellers'] = params.get('adults');
 
 		localStorage.setItem('flightDetails', JSON.stringify(flightDetails));
 	};
