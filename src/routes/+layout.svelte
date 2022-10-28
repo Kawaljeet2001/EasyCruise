@@ -8,13 +8,11 @@
 	import { user } from '../stores/store.js';
 	import { validateUser } from '../utils/auth.js';
 
-	// $: console.log('The user is: ', $user);
+	$: console.log('The user is: ', $user);
 
 	let isSiteReadyToLoad = false;
 	onMount(async () => {
-		if (!user) {
-			await validateUser();
-		}
+		await validateUser();
 		isSiteReadyToLoad = true;
 	});
 </script>

@@ -3,6 +3,7 @@
 	export let details, activeSection, completeCurrentSection, isSectionCompleted;
 	import { dateInFormat2 } from '../../../utils/dateParser.svelte';
 	import ReviewDetailsCompleted from './ReviewDetailsCompleted.svelte';
+	import { FlightCodeLookup } from '../../../utils/FlightCodeLookup';
 </script>
 
 <div class="w-full border-b border-gray-300 pb-10">
@@ -16,7 +17,7 @@
 			titleDesc={null}
 		/>
 		<div class="flex items-center mt-10">
-			<h2 class="font-semibold">{details.details.from} -> {details.details.to}</h2>
+			<h2 class="font-semibold">{details.details.source} -> {details.details.destination}</h2>
 			<p class="mx-6 text-gray-400">{dateInFormat2(details.depart_date)}</p>
 			{#if details.details.arrivalDay == 'next'}
 				<div class="bg-orange-100 px-2 py-0.5 rounded-sm text-xs font-medium text-gray-800">
@@ -35,7 +36,7 @@
 					alt="Burger"
 					class="w-8"
 				/>
-				<p class="text-sm text-gray-500">{details.details.name}</p>
+				<p class="text-sm text-gray-500">{details.details.company}</p>
 				<p class="text-sm text-gray-500">{details.details.flightCode}</p>
 				<p class="text-sm text-gray-500">{details.class}</p>
 			</div>
@@ -46,16 +47,16 @@
 			</div>
 			<div class="col-span-7 flex flex-col">
 				<h3>
-					<span class="font-bold text-lg">{details.details.departureTime}</span>
-					{details.details.fromCode}
+					<span class="font-bold text-lg">{details.details.departure}</span>
+					{FlightCodeLookup[details.details.source]}
 					<span class="ml-2 font-medium text-gray-800 text-xs"
 						>Kempegowda International Airport, Bangalore, Terminal 1</span
 					>
 				</h3>
 				<p class="text-xs font-light my-6 text-gray-500">{details.details.duration}</p>
 				<h3>
-					<span class="font-bold text-lg">{details.details.arrivalTime}</span>
-					{details.details.toCode}
+					<span class="font-bold text-lg">{details.details.arrival}</span>
+					{FlightCodeLookup[details.details.destination]}
 					<span class="ml-2 font-medium text-gray-800 text-xs"
 						>BOM Chatrapati Shivaji Airport, Mumbai, Terminal 1</span
 					>

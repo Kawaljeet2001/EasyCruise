@@ -5,8 +5,9 @@
 	import { onMount } from 'svelte';
 	import FlightJourneyDetails from './FlightJourney/FlightJourneyDetails.svelte';
 	import { journeyDepartureDateString, arrivalDateParser } from '../..//utils/dateParser.svelte';
-	import {addFlightDetailsToLocalStorage} from "../../utils/localStorge.svelte";
+	import { addFlightDetailsToLocalStorage } from '../../utils/localStorge.svelte';
 	import LoaderFullscreen from '../Loader/LoaderFullscreen.svelte';
+	import { FlightCodeLookup } from '../../utils/FlightCodeLookup.js';
 
 	//state
 	let detailsView = false;
@@ -26,7 +27,7 @@
 				alt="airline-logo"
 				class="h-3/6"
 			/>
-			<h3 class="mt-2 text-gray-400 ml-2.5 text-sm ">{details.name}</h3>
+			<h3 class="mt-2 text-gray-400 ml-2.5 text-sm ">{details.company}</h3>
 			<p class="text-gray-400 ml-2.5 text-sm ">{details.flightCode}</p>
 		</div>
 		<div
@@ -43,10 +44,10 @@
 				</button>
 			{/if}
 			<div class="col-span-3 flex flex-col items-end justify-center">
-				<p class="font-light">{details.fromCode}</p>
-				<h3 class="flex items-center text-2xl font-mediuim">{details.departureTime}</h3>
+				<p class="font-light">{FlightCodeLookup[details.source]}</p>
+				<h3 class="flex items-center text-2xl font-mediuim">{details.departure}</h3>
 				<p class="text-gray-300 mt-2 text-sm">{journeyDepartureDateString(flightDetails)}</p>
-				<p class="text-gray-300 text-sm">{details.from}</p>
+				<p class="text-gray-300 text-sm">{details.source}</p>
 			</div>
 			<div class="col-span-5 flex flex-col items-center justify-center">
 				<p class="flex items-center text-gray-300 font-medium text-sm">{details.duration}</p>
@@ -54,25 +55,24 @@
 				<p class="flex items-center text-gray-300 font-medium text-sm">non-stop</p>
 			</div>
 			<div class="col-span-3 flex flex-col items-start justify-center">
-				<p class="font-light">{details.toCode}</p>
-				<h3 class="flex items-center text-2xl font-mediuim">{details.arrivalTime}</h3>
+				<p class="font-light">{FlightCodeLookup[details.destination]}</p>
+				<h3 class="flex items-center text-2xl font-mediuim">{details.arrival}</h3>
 				<p class="text-gray-300 mt-2 text-sm">
 					{arrivalDateParser(flightDetails.depart_date, details.arrivalDay)}
 				</p>
-				<p class="text-gray-300 text-sm">{details.to}</p>
+				<p class="text-gray-300 text-sm">{details.destination}</p>
 			</div>
 		</div>
 
 		<div class="flex items-center justify-around col-span-5 p-6 ">
-			<h3 class="flex items-center text-3xl text-orange2">&#8377;{details.pricePerPerson}</h3>
+			<h3 class="flex items-center text-3xl text-orange2">&#8377;{details.ecoPrice}</h3>
 			<button
 				class="rounded-sm bg-orange1 hover:bg-orange-700 text-white font-extrabold flex items-center justify-center py-2.5 px-16 shadow-md"
 				on:click={() => {
 					//setting the details also in the localStorage section
 					addFlightDetailsToLocalStorage(details);
-					window.location.href="/flights/itinerary"
-				}}
-				>BOOK</button
+					window.location.href = '/flights/itinerary';
+				}}>BOOK</button
 			>
 		</div>
 		{#if detailsView}

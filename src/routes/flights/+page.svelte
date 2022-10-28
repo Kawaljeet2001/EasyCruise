@@ -8,13 +8,14 @@
 
 	export let data;
 	const { params } = data;
+	let flightSearchDetais = null
 	let loadPage = false;
 
 	let availableFlights = [];
 	const getFlights = async () => {
 		try {
-			const res = await axios.get('http://localhost:5000/api/flights');
-			availableFlights = res.data.data;
+			const res = await axios.get(`http://localhost:8000/api/flights/${flightSearchDetais.from}/${flightSearchDetais.to}`);
+			availableFlights = res.data;
 			loadPage = true;
 		} catch (err) {
 			console.log(err);
@@ -23,6 +24,8 @@
 	onMount(async () => {
 		//storing the parameters in localstorage
 		setFlightDetailsToLocalStorage(params);
+		flightSearchDetais = JSON.parse(localStorage.getItem("flightDetails"));
+		// console.log(flightSearchDetais.from , flightSearchDetais.to)
 		await getFlights();
 	});
 </script>
