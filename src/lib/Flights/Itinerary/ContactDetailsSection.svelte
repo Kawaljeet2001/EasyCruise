@@ -1,8 +1,8 @@
 <script>
+	export let activeSection, completeCurrentSection, saveDetails, isSectionCompleted, personalInformation;
 	import ContactDetailsCompleted from './ContactDetailsCompleted.svelte';
 	import SectionHeading from './SectionHeading.svelte';
-	export let activeSection, completeCurrentSection, saveDetails, isSectionCompleted, personalInformation;
-
+	import {ticketBookingDetails} from "../../../stores/store.js";
 	const isContactFormValid = (item) => {
 		for (const key of Object.keys(item)) {
 			if (!item[key]) return false;
@@ -25,6 +25,7 @@
 		if (!isContactFormValid(data))
 			alert('The form is not valid! All fields are required and cannot be empty!');
 		else {
+			$ticketBookingDetails = {...$ticketBookingDetails , "contactDetails" : data};
 			saveDetails(data);
 			completeCurrentSection();
 		}

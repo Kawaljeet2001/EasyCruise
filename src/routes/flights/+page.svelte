@@ -4,17 +4,19 @@
 	import LoaderFullscreen from '$lib/Loader/LoaderFullscreen.svelte';
 	import { onMount } from 'svelte';
 	import CheapestFareCard from '../../lib/Flights/FlightJourney/CheapestFareCard.svelte';
-	import {setFlightDetailsToLocalStorage} from "../../utils/localStorge.svelte";
+	import { setFlightDetailsToLocalStorage } from '../../utils/localStorge.svelte';
 
 	export let data;
 	const { params } = data;
-	let flightSearchDetais = null
+	let flightSearchDetais = null;
 	let loadPage = false;
 
 	let availableFlights = [];
 	const getFlights = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8000/api/flights/${flightSearchDetais.from}/${flightSearchDetais.to}`);
+			const res = await axios.get(
+				`http://localhost:8000/api/scheduledflights/${flightSearchDetais.from}/${flightSearchDetais.to}/${flightSearchDetais.class}/${flightSearchDetais.depart_date}`
+			);
 			availableFlights = res.data;
 			loadPage = true;
 		} catch (err) {
@@ -24,23 +26,48 @@
 	onMount(async () => {
 		//storing the parameters in localstorage
 		setFlightDetailsToLocalStorage(params);
-		flightSearchDetais = JSON.parse(localStorage.getItem("flightDetails"));
-		// console.log(flightSearchDetais.from , flightSearchDetais.to)
+		flightSearchDetais = JSON.parse(localStorage.getItem('flightDetails'));
 		await getFlights();
 	});
 </script>
 
 <main class="flex flex-col items-center bg-gray1 min-h-screen">
 	{#if loadPage}
-		<CheapestFareCard />
-		<div class="grid grid-cols-8 gap-x-6 w-7/12 mt-4">
-			<div class="col-span-8 flex flex-col  rounded-lg">
-				{#each availableFlights as item, index}
-					<FlightJourney details={item} />
-				{/each}
+		{#if availableFlights.length}
+			<CheapestFareCard />
+			<div class="grid grid-cols-8 gap-x-6 w-7/12 mt-4">
+				<div class="col-span-8 flex flex-col  rounded-lg">
+					{#each availableFlights as item, index}
+						<FlightJourney details={item} />
+					{/each}
+				</div>
 			</div>
-		</div>
+		{:else}
+			<div class="w-6/12 mt-16 grid grid-cols-5 gap-x-2">
+				<div class="col-span-1 flex flex-col items-end justify-start">
+					<p class="errorText -mt-8 font-extrabold text-orange1">!</p>
+				</div>
+				<div class="col-span-4 flex flex-col">
+					<p class="text-3xl font-bold w-8/12">
+						No flights available. Please try for a different date.
+					</p>
+					<div class="mt-4 flex items-center w-6/12">
+						<a
+							href="/"
+							class="bg-orange1 hover:bg-orange-700 rounded-md text-white font-bold px-12 py-2.5"
+							>Back to Home</a
+						>
+					</div>
+				</div>
+			</div>
+		{/if}
 	{:else}
 		<LoaderFullscreen />
 	{/if}
 </main>
+
+<style>
+	.errorText {
+		font-size: 90px;
+	}
+</style>

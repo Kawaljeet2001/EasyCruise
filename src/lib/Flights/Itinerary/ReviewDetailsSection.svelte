@@ -4,6 +4,24 @@
 	import { dateInFormat2 } from '../../../utils/dateParser.svelte';
 	import ReviewDetailsCompleted from './ReviewDetailsCompleted.svelte';
 	import { FlightCodeLookup } from '../../../utils/FlightCodeLookup';
+	import {ticketBookingDetails} from "../../../stores/store.js";
+
+	const saveDetails = (details) => {
+		var journeyDetails = {};
+		journeyDetails["source"] = details.details.source;
+		journeyDetails["destination"] = details.details.destination;
+		journeyDetails["date"] = details.depart_date;
+		journeyDetails["cabinClass"] = details.class;
+		journeyDetails["flightCode"] = details.details.flightDetails.flightCode;
+		journeyDetails["company"] = details.details.flightDetails.company
+
+		$ticketBookingDetails = {...$ticketBookingDetails , "itinery" : journeyDetails};
+		$ticketBookingDetails = {...$ticketBookingDetails , "flightId" : details.details.flightId};
+		$ticketBookingDetails = {...$ticketBookingDetails , "scheduleId" : details.details.id};
+
+	}
+
+	console.log(details);
 </script>
 
 <div class="w-full border-b border-gray-300 pb-10">
@@ -36,8 +54,8 @@
 					alt="Burger"
 					class="w-8"
 				/>
-				<p class="text-sm text-gray-500">{details.details.company}</p>
-				<p class="text-sm text-gray-500">{details.details.flightCode}</p>
+				<p class="text-sm text-gray-500">{details.details.flightDetails.company}</p>
+				<p class="text-sm text-gray-500">{details.details.flightDetails.flightCode}</p>
 				<p class="text-sm text-gray-500">{details.class}</p>
 			</div>
 			<div class="col-span-1 flex flex-col h-5/6 items-center justify-between">
@@ -47,15 +65,15 @@
 			</div>
 			<div class="col-span-7 flex flex-col">
 				<h3>
-					<span class="font-bold text-lg">{details.details.departure}</span>
+					<span class="font-bold text-lg">{details.details.flightDetails.departure}</span>
 					{FlightCodeLookup[details.details.source]}
 					<span class="ml-2 font-medium text-gray-800 text-xs"
 						>Kempegowda International Airport, Bangalore, Terminal 1</span
 					>
 				</h3>
-				<p class="text-xs font-light my-6 text-gray-500">{details.details.duration}</p>
+				<p class="text-xs font-light my-6 text-gray-500">{details.details.flightDetails.duration}</p>
 				<h3>
-					<span class="font-bold text-lg">{details.details.arrival}</span>
+					<span class="font-bold text-lg">{details.details.flightDetails.arrival}</span>
 					{FlightCodeLookup[details.details.destination]}
 					<span class="ml-2 font-medium text-gray-800 text-xs"
 						>BOM Chatrapati Shivaji Airport, Mumbai, Terminal 1</span
@@ -67,6 +85,8 @@
 			<button
 				type="button"
 				on:click={() => {
+					//store this data in the store variable
+					saveDetails(details);
 					completeCurrentSection();
 				}}
 				class="rounded-md text-sm  bg-orange1 hover:bg-orange-700 text-white font-medium flex items-center justify-center py-2.5 px-6 w-36"
@@ -75,7 +95,4 @@
 		</div>
 	{/if}
 
-	<!-- {#if activeSection == 'review'}
-		
-	{/if} -->
 </div>

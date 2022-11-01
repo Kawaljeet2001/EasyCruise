@@ -1,6 +1,7 @@
 <script>
 	import LoaderFullscreen from '../../lib/Loader/LoaderFullscreen.svelte';
 	import axios from 'axios';
+	import { onMount } from 'svelte';
 	const isFormValid = (data) => {
 		for (const item of Object.keys(data)) {
 			if (!data[item]) return false;
@@ -20,19 +21,26 @@
 		}
 		console.log(data);
 		isFormSubmitted = true;
+		sendUserLoginRequest(data);
 	};
 
 	const sendUserLoginRequest = async (data) => {
 		try {
-			const res = await axios.post('/api/signin', data);
+			const res = await axios.post('http://localhost:8000/api/userlogin', data, {
+				withCredentials: true
+			});
 			console.log(res.data);
+			//also setting this user Data isLoggedIn playlist
+			localStorage.setItem('isLoggedIn', JSON.stringify(res.data));
+
+			//redirect to previous pushed url is any
+			window.location.href = '/';
 		} catch (err) {
 			console.log(err);
 		}
 	};
 	//states
 	let isFormSubmitted = false;
-	//states
 </script>
 
 <div class="z-40 fixed top-0 h-screen w-full flex justify-center items-center bg-white">
@@ -49,13 +57,13 @@
 		</div>
 		<div class="col-span-7 p-12 h-full flex flex-col items-center justify-between">
 			<form class="flex flex-col w-full" on:submit|preventDefault={handleSubmit}>
-				<h3 class="text-2xl">Login to "my company"</h3>
-				<p class="text-xs text-gray-400 mt-10">Enter email</p>
+				<h3 class="text-2xl">Login to easycruise</h3>
+				<p class="text-xs text-gray-400 mt-10">Enter username</p>
 				<input
-					type="email"
-					placeholder="eg. h@k.xyz"
+					type="text"
+					placeholder="eg. john doe"
 					class="border border-gray-200 mt-1 p-3 rounded-sm"
-					name="email"
+					name="username"
 					value=""
 				/>
 				<p class="text-xs text-gray-400 mt-2">Enter password</p>

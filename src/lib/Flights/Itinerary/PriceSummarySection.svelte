@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-
+	import {finalPayabaleAmount} from "../../../stores/store.js";
 
 	export let details;
 
@@ -32,7 +32,8 @@
     }
 
     onMount(() => {
-        getTotalPrice(details.details.pricePerPerson, details.numOfTravellers, 18)
+        var finalPrice = getTotalPrice(details.details.ticketPrice, details.numOfTravellers, 18)
+		finalPayabaleAmount.set(finalPrice);
     })
 
 </script>
@@ -42,7 +43,7 @@
 		<div class="flex flex-col">
 			<h3 class="flex items-center justify-between">
 				Total Price <span class="font-extrabold"
-					>&#8377; {formatPrice(totalPrice)}</span
+					>&#8377; {formatPrice($finalPayabaleAmount)}</span
 				>
 			</h3>
 			<p class="flex items-center mt-2 justify-between text-xs text-gray-400">
@@ -51,7 +52,7 @@
 		</div>
 		<div class="pt-3 border-t border-gray-200">
 			<p class="flex items-center justify-between text-xs text-gray-400">
-				Base Fare (1 Traveller) <span>&#8377; {formatPrice(Number(details.details.pricePerPerson))}</span>
+				Base Fare (1 Traveller) <span>&#8377; {formatPrice(Number(details.details.ticketPrice))}</span>
 			</p>
 			<p class="flex items-center justify-between text-xs text-gray-400 mt-2">
 				Taxes (GST) <span

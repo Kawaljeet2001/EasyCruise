@@ -1,11 +1,13 @@
 <script>
-	import LoaderFullscreen from '../../Loader/LoaderFullscreen.svelte';
-	import SectionHeading from './SectionHeading.svelte';
 	export let numberOfTravellers,
 		activeSection,
 		completeCurrentSection,
 		saveDetails,
 		isSectionCompleted;
+	import LoaderFullscreen from '../../Loader/LoaderFullscreen.svelte';
+	import SectionHeading from './SectionHeading.svelte';
+	import { goto } from '$app/navigation';
+	import {ticketBookingDetails} from "../../../stores/store.js";
 
 	const parseTravellerData = (data) => {
 		const dataArray = new Array(numberOfTravellers);
@@ -37,10 +39,12 @@
 		}
 		data = parseTravellerData(data);
 		saveDetails({ travellers: data });
+		$ticketBookingDetails = {...$ticketBookingDetails , "travellerDetails" : data};
 		completeCurrentSection();
 
-		setTimeout(() => {
-			window.location.href = "/payment";
+		console.log($ticketBookingDetails);
+		setTimeout(async () => {
+			await goto("/payment");
 		},1500)
 	};
 </script>
@@ -71,7 +75,7 @@
 					<input
 						type="text"
 						placeholder="Last name"
-						class="border col-span-5 border-gray-300 mt-1 p-2 rounded-sm"
+						class="border col-span-3 border-gray-300 mt-1 p-2 rounded-sm"
 						name="{index + 1}lastName"
 						value=""
 					/>
@@ -82,6 +86,14 @@
 						<option>Gender</option>
 						<option>M</option>
 						<option>F</option>
+					</select>
+					<select
+						class="border text-gray-400 col-span-2 border-gray-300 mt-1 p-2 rounded-sm bg-transparent"
+						name="{index + 1}foodPreference"
+					>
+						<option>Food</option>
+						<option>Veg</option>
+						<option>Non Veg</option>
 					</select>
 				</div>
 			</div>

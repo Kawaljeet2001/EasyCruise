@@ -5,7 +5,8 @@
 	import ReviewDetailsSection from '$lib/Flights/Itinerary/ReviewDetailsSection.svelte';
 	import LoaderFullscreen from '../../../lib/Loader/LoaderFullscreen.svelte';
 	import PriceSummarySection from '../../../lib/Flights/Itinerary/PriceSummarySection.svelte';
-
+	import { goto } from '$app/navigation';
+	
 	let numberOfTravellers = null;
 	let flightDetails = null;
 	let activeSection = 'review';
@@ -19,9 +20,12 @@
 		contactEmail: null,
 		travellers: []
 	};
-	onMount(() => {
+	onMount(async () => {
 		
 		//checking for userloggedin or not
+		if(!localStorage.getItem("isLoggedIn")){
+			await goto("/signin");
+		}
 		flightDetails = JSON.parse(localStorage.getItem('flightDetails'));
 		numberOfTravellers = Number(flightDetails.numOfTravellers);
 	});

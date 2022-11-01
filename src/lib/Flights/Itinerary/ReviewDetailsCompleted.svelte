@@ -15,16 +15,16 @@
 	</div>
 	<div class="grid grid-cols-12 gap-x-6 w-full">
 		<div class="col-span-3 flex flex-col">
-			<p class="font-bold">{details.details.company}</p>
-			<p class="text-sm">{details.details.flightCode}</p>
+			<p class="font-bold">{details.details.flightDetails.company}</p>
+			<p class="text-sm">{details.details.flightDetails.flightCode}</p>
 		</div>
 		<div class="col-span-5 flex flex-col">
 			<p class="font-bold ">{details.details.source} -> {details.details.destination}</p>
 			<p class="text-sm">{dateInFormat2(details.depart_date)}</p>
 		</div>
 		<div class="col-span-4 flex flex-col">
-			<p class="font-bold ">{details.details.departure} - {details.details.arrival}</p>
-			<p class="text-sm">{details.details.duration}</p>
+			<p class="font-bold ">{details.details.flightDetails.departure} - {details.details.flightDetails.arrival}</p>
+			<p class="text-sm">{details.details.flightDetails.duration}</p>
 		</div>
 	</div>
 </div>
