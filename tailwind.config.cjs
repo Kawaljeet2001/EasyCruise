@@ -10,7 +10,8 @@ module.exports = {
 				peach1: '#fff6e7',
 				green1: '#007c5b',
 				orange1: '#ed5b26',
-				orange2: '#ec5b24'
+				orange2: '#ec5b24',
+				gray2 : "#252422"
 			},
 			borderRadius: {
 				roundedBg: '80%',
@@ -31,7 +32,9 @@ module.exports = {
 				'80v': '80vh'
 			},
 			boxShadow: {
-				shadow1: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'
+				shadow1: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+				shadow2: '0 2px 24px rgba(0,0,0,.04)',
+			
 			},
 			margin: {}
 		}

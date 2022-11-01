@@ -2,30 +2,32 @@ import { user } from '../stores/store.js';
 import axios from 'axios';
 import { goto } from '$app/navigation';
 
-const privateRoutes = ['itinerary', 'payments'];
+const privateRoutes = ['itinerary', 'payments', 'confirmation', 'profile'];
+const prohibitedWhenLoggedIn = ['signin'];
 
-const isPrivateRoute = (pathname) => {
+const isPrivateRoute = (pathname , privateRoutes) => {
 	for (const item of privateRoutes) {
 		if (pathname.includes(item)) return true;
 	}
 	return false;
 };
 export const validateUser = async () => {
-	try {
-		const res = await axios.post('http://localhost:5000/api/checkuserlogin');
-		if (res.data) {
-			user.set("hurray the user is there");
-		} else {
-			user.set(null);
-			//redirecting to login route
-			let currentLocation = window.location.pathname;
+	//first checking if isLoggedIn localStorage is set or not
+	if (localStorage.getItem('isLoggedIn')) {
 
-			if (isPrivateRoute(currentLocation)) {
-				await goto('/signin?error=expired-token');
-				return false;
-			}
+		if(isPrivateRoute(window.location.pathname , prohibitedWhenLoggedIn)){
+			await goto('/');
 		}
-	} catch (err) {
-		console.log(err);
+
+		let userDetails = JSON.parse(localStorage.getItem("isLoggedIn"));
+		user.set(userDetails);
+		return true;
+	} else {
+		user.set(null);
+		let currentLocation = window.location.pathname;
+		if (isPrivateRoute(currentLocation , privateRoutes)) {
+			await goto('/signin?error=protected-content');
+			return false;
+		}
 	}
 };
