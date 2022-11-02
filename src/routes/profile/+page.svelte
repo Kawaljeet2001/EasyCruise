@@ -20,9 +20,9 @@
 	});
 </script>
 
-<div class="profilescreen flex justify-center py-20">
+<div class="profilescreen flex justify-center py-20 bg-gray-100">
 	<div class="w-8/12 grid grid-cols-12 gap-x-10">
-		<div class="col-span-4 rounded-lg p-8 shadow-shadow2 flex flex-col items-center">
+		<div class="col-span-4 rounded-lg p-8 shadow-lg flex flex-col items-center bg-white">
 			<div class="h-48 w-48 rounded-full shadow-shadow1 overflow-hidden mt-4">
 				<img
 					src="https://www.live4india.com/images/users/6.jpg"
@@ -35,7 +35,7 @@
 				This is just any simple demo punch line, which is not really necessary.
 			</p>
 		</div>
-		<div class="col-span-8 flex flex-col shadow-shadow2">
+		<div class="col-span-8 flex flex-col shadow-lg bg-white rounded-md">
 			<div class="w-full flex flex-col p-8">
 				<p class="text-lg font-bold">My Journeys</p>
 				<div class="flex flex-col w-full mt-6">

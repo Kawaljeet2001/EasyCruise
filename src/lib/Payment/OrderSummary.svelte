@@ -1,10 +1,11 @@
 <script>
+	export let paymentMethod;
 	import { onMount } from 'svelte';
 	import { ticketBookingDetails, finalPayabaleAmount, user } from '../../stores/store.js';
 	import LoaderFullscreen from '../Loader/LoaderFullscreen.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	import axios from 'axios';
-	import { goto } from '$app/navigation';
+
 	let transactionFee = 35;
 	let grandTotalPayable = 0;
 	let submitPayment = 'none';
@@ -23,11 +24,20 @@
 				{ withCredentials: true }
 			);
 			if (res.data) {
-				console.log(res.data);
-				let pnr = res.data.pnr;
-				//set the pnr to localStorage
-				localStorage.setItem("pnr" , pnr);
-				window.location.href = "/flights/confirmation";
+				//also update the schedule by decrementing the available seats;
+				const seats = await axios.patch(
+					`http://localhost:8000/api/updateSchedule/${scheduleId}/${cabinClass}/${numberOfTravellers}`,
+					{},
+					{ withCredentials: true }
+				);
+
+				if (seats.data) {
+					let pnr = res.data.pnr;
+					//set the pnr to localStorage
+					localStorage.setItem('pnr', pnr);
+					window.location.href = '/flights/confirmation';
+				}
+
 				//allot the seats based on the previously existing seats
 			}
 		} catch (err) {
@@ -56,6 +66,7 @@
 		delete obj.scheduleId;
 		delete obj.amountPayed;
 		delete obj.pnr;
+		obj.paymentMethod = paymentMethod;
 		senddata['metaData'] = JSON.stringify(obj);
 
 		console.log('the final details are', $ticketBookingDetails);

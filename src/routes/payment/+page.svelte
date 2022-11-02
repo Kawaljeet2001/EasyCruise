@@ -101,6 +101,6 @@
 				</div>
 			</div>
 		</div>
-		<OrderSummary />
+		<OrderSummary paymentMethod = {paymentMethod}/>
 	</div>
 </div>
