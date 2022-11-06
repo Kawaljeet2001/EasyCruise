@@ -41,7 +41,7 @@
 		</div>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<label
-			class="rounded-lg bg-lightBlue p-4 col-span-12 mt-4 lg:mt-0 lg:col-span-2 flex flex-col"
+			class="rounded-lg bg-lightBlue p-4 col-span-12 mt-4 lg:mt-0 lg:col-span-4 flex flex-col"
 			for="date-input"
 		>
 			<p class="text-sm text-gray-400">From Date</p>

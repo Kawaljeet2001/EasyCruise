@@ -2,22 +2,26 @@
 	import axios from 'axios';
 	let isVisible = true;
 	import { user } from '../../stores/store.js';
+	import { page } from '$app/stores';
+
 	let showHiddenMenu = false;
 	const handleLogout = async () => {
 		try {
 			//deleting the localStorage key
-			const res = await axios.post('http://localhost:8000/api/userlogout', {}, { withCredentials: true });
+			const res = await axios.post(
+				'http://localhost:8000/api/userlogout',
+				{},
+				{ withCredentials: true }
+			);
 			console.log(res.data);
-			if(res.data){
+			if (res.data) {
 				localStorage.removeItem('isLoggedIn');
-				window.location.href = "/";
+				window.location.href = '/';
 			}
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
-
 </script>
 
 {#if isVisible}
@@ -29,13 +33,30 @@
 			>
 		</div>
 		<div class="relative flex items-center justify-between">
-			<a class="mx-4 text-lg" href="/">Flights</a>
-			<a class="mx-4 text-lg" href="/support">Support</a>
+			<a
+				class="py-2 px-6 text-lg mx-2 rounded-md font-medium {$page.url.pathname == '/'
+					? 'bg-blue-50 text-blue-600 '
+					: 'bg-white'}"
+				href="/">Flights</a
+			>
+
+			<a
+				class="py-2 px-6 text-lg mx-2 rounded-md font-medium {$page.url.pathname == '/about'
+					? 'bg-blue-50 text-blue-600 '
+					: 'bg-white'}"
+				href="/about">About</a
+			>
+			<a
+				class="py-2 px-6 text-lg mx-2 rounded-md font-medium {$page.url.pathname == '/contact'
+					? 'bg-blue-50 text-blue-600 '
+					: 'bg-white'}"
+				href="/contact">Contact us</a
+			>
 			{#if $user}
 				<button
 					class="h-12 w-12 mx-4 rounded-full bg-orange1 text-white font-bold text-lg"
 					type="button"
-					on:click={() => showHiddenMenu = !showHiddenMenu}>{$user.data.username[0]}</button
+					on:click={() => (showHiddenMenu = !showHiddenMenu)}>{$user.data.username[0]}</button
 				>
 			{:else}
 				<a
