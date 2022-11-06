@@ -43,8 +43,8 @@
 		<h3 class="mt-16 mb-4 text-left w-9/12 text-xl font-medium text-orange1">
 			Thanks for booking the ticket! Your ticket details are mentioned below.
 		</h3>
-		<div class="w-9/12 grid grid-cols-12 gap-x-6 h-3/6 ">
-			<div class="flex flex-col rounded-xl p-10 bg-white col-span-4">
+		<div class="w-11/12 lg:w-9/12 grid grid-cols-12 gap-x-6 h-3/6 ">
+			<div class="flex flex-col rounded-xl p-10 bg-white col-span-12 lg:col-span-4">
 				<div class="flex flex-col border-b-2 border-dashed border-gray-300 pb-12">
 					<div class="flex items-center justify-between">
 						<p
@@ -74,7 +74,7 @@
 							</p>
 						</div>
 						<div class="flex flex-col col-span-4 my-4">
-							<p class="text-gray-500 text-sm">Date</p>
+							<p class="text-gray-500 text-sm">Date of Journey</p>
 							<p class="text-xl mt-2 font-bold">{ticketDetails.metaData.itinery.date}</p>
 						</div>
 						<div class="flex flex-col col-span-4 my-4">
@@ -115,7 +115,7 @@
 			/> -->
 				<p class="w-full text-center mt-2">PNR : {pnr}</p>
 			</div>
-			<div class="flex flex-col justify-between rounded-xl p-10 bg-white col-span-8">
+			<div class="flex flex-col justify-between rounded-xl p-10 bg-white mt-6 lg:mt-0 col-span-12 lg:col-span-8">
 				<div class="w-full shadow-shadow2 bg-white py-6 px-8 rounded-md grid grid-cols-12 gap-x-4">
 					<div class="col-span-3 flex flex-col">
 						<p class="text-gray-300 text-sm">Departure</p>
@@ -125,16 +125,16 @@
 						<p class="text-gray-300 text-sm">Arrival</p>
 						<p class="text-xl mt-1 font-bold">{ticketDetails.flightDetails.arrival}</p>
 					</div>
-					<div class="col-span-3 flex flex-col">
+					<div class="col-span-6 lg:col-span-3 flex flex-col">
 						<p class="text-gray-300 text-sm">Duration</p>
 						<p class="text-xl mt-1 font-bold">{ticketDetails.flightDetails.duration}</p>
 					</div>
-					<div class="col-span-3 flex flex-col">
+					<div class="col-span-6 lg:mt-0 mt-2 lg:col-span-3 flex flex-col">
 						<p class="text-gray-300 text-sm">Payment method</p>
 						<p class="text-xl mt-1 font-bold">{ticketDetails.metaData.paymentMethod}</p>
 					</div>
 				</div>
-				<div class="grid grid-cols-2 py-4 gap-4 overflow-y-auto h-40v">
+				<div class="grid grid-cols-2 py-4 lg:gap-4 overflow-y-auto h-40v">
 					{#each ticketDetails.metaData.travellerDetails as traveller}
 						<TicketPassangerDetails data={traveller} />
 					{/each}

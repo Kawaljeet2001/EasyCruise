@@ -33,8 +33,8 @@
 
 {#if flightDetails}
 	<div class="min-h-screen w-full flex justify-center">
-		<div class="w-8/12 py-12 mt-4 grid grid-cols-12 gap-x-6">
-			<div class="flex flex-col col-span-9">
+		<div class="w-11/12 lg:w-8/12 py-12 mt-4 grid grid-cols-12 gap-x-6">
+			<div class="flex flex-col col-span-12 lg:col-span-9">
 				<ReviewDetailsSection
 					details={flightDetails}
 					{activeSection}

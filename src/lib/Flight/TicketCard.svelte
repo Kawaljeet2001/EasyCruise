@@ -20,8 +20,8 @@
 
 <div class="bg-white w-full p-8 rounded-3xl shadow-lg flex flex-col">
 	<div class="grid grid-cols-12 gap-x-2">
-		<div class="col-span-8 grid grid-cols-11 gap-x-2">
-			<div class="rounded-lg bg-lightBlue p-4 col-span-5 flex flex-col">
+		<div class="col-span-12 lg:col-span-8 grid grid-cols-12 lg:grid-cols-11 lg:gap-x-2">
+			<div class="rounded-lg bg-lightBlue p-4 col-span-12 lg:col-span-5 flex flex-col">
 				<p class="text-sm text-gray-400">From</p>
 				<input
 					class="text-xl font-semibold mt-1.5 bg-transparent outline-none"
@@ -29,8 +29,8 @@
 				/>
 				<p class="text-sm text-gray-400">DEL, India Gandhi Int"l Airport</p>
 			</div>
-			<div class="rounded-lg bg-white p-4 col-span-1 flex flex-col" />
-			<div class="rounded-lg bg-lightBlue p-4 col-span-5 flex flex-col">
+			<div class="rounded-lg bg-white p-4 col-span-1 hidden lg:flex flex-col" />
+			<div class="rounded-lg bg-lightBlue p-4 col-span-12 lg:col-span-5 flex flex-col mt-4 lg:mt-0">
 				<p class="text-sm text-gray-400">To</p>
 				<input
 					class="text-xl font-semibold mt-1.5 bg-transparent outline-none"
@@ -40,7 +40,10 @@
 			</div>
 		</div>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<label class="rounded-lg bg-lightBlue p-4 col-span-2 flex flex-col" for="date-input">
+		<label
+			class="rounded-lg bg-lightBlue p-4 col-span-12 mt-4 lg:mt-0 lg:col-span-2 flex flex-col"
+			for="date-input"
+		>
 			<p class="text-sm text-gray-400">From Date</p>
 			<div class="flex flex-col">
 				<p class="mt-2 text-xl font-semibold">
@@ -57,25 +60,20 @@
 				{parseDateUtil(ticketInput.departureDate, 'dayString')}
 			</p>
 		</label>
-		<!-- <div class="rounded-lg bg-lightBlue p-4 col-span-2 flex flex-col">
-			<p class="text-sm text-gray-400">Return Date</p>
-			<input class="text-xl font-semibold mt-1.5 bg-transparent outline-none" value="22 Oct" />
-			<p class="text-sm text-gray-400">Friday, 2022</p>
-		</div> -->
 	</div>
 	<div class="grid grid-cols-12 gap-x-2 w-full pt-4 justify-end">
-		<div class="col-span-8 grid grid-cols-11 gap-x-2">
+		<div class="col-span-12 lg:col-span-8 grid grid-cols-12 lg:grid-cols-11 gap-x-2">
 			<select
 				bind:value={ticketInput.class}
 				name="class"
-				class="bg-lightBlue px-3 rounded-lg col-span-3 flex items-center justify-center font-semibold"
+				class="bg-lightBlue py-3 lg:py-0 px-3 rounded-lg col-span-6 lg:col-span-3 flex items-center justify-center font-semibold"
 			>
 				<option value="Economy">Economy</option>
 				<option value="Business">Business</option>
 				<option value="Executive">Executive</option>
 			</select>
 			<div
-				class="flex items-center justify-center bg-lightBlue rounded-lg col-span-2 relative px-3 h-full"
+				class="flex items-center justify-center bg-lightBlue rounded-lg col-span-6 lg:col-span-2 relative px-3 h-full"
 			>
 				<select
 					bind:value={ticketInput.adults}
@@ -93,7 +91,7 @@
 		</div>
 		<a
 			href={`/flights?from=${ticketInput.from}&to=${ticketInput.to}&depart_date=${ticketInput.departureDate}&class=${ticketInput.class}&adults=${ticketInput.adults}`}
-			class="col-span-4 rounded-lg bg-orange1 hover:bg-orange-700 text-white font-bold flex justify-center p-3"
+			class="col-span-12 mt-4 lg:mt-0 lg:col-span-4 rounded-lg bg-orange1 hover:bg-orange-700 text-white font-bold flex justify-center p-3"
 			>Search</a
 		>
 	</div>

@@ -31,6 +31,20 @@ module.exports = {
 				'70v': '70vh',
 				'80v': '80vh'
 			},
+			minHeight : {
+				'1v': '2px',
+				'10v': '10vh',
+				'12v': '12vh',
+				'15v': '15vh',
+				'20v': '20vh',
+				'30v': '30vh',
+				'35v': '35vh',
+				'40v': '40vh',
+				'45v': '45vh',
+				'60v': '60vh',
+				'70v': '70vh',
+				'80v': '80vh'
+			},
 			boxShadow: {
 				shadow1: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
 				shadow2: '0 2px 24px rgba(0,0,0,.04)',

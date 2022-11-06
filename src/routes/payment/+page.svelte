@@ -4,8 +4,8 @@
 </script>
 
 <div class="h-screen w-full flex flex-col bg-white items-center py-12 z-30 absolute top-0">
-	<div class="w-8/12 h-5/6 grid grid-cols-12 shadow-lg mt-8">
-		<div class="col-span-7 bg-gray1 py-20 px-16">
+	<div class="w-11/12 lg:w-8/12 h-5/6 grid grid-cols-12 shadow-lg mt-8">
+		<div class="col-span-12 lg:col-span-7 bg-gray1 py-20 px-4 lg:px-16">
 			<h3 class="text-2xl font-bold">Payment method</h3>
 			<div class="mt-8">
 				<div class="bg-white rounded-md p-4 flex flex-col items-center shadow-sm my-2">

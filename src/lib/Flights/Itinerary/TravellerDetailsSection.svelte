@@ -64,23 +64,23 @@
 			<div class="flex flex-col my-10">
 				<h3 class="font-bold text-lg">Adult {index + 1}</h3>
 				<p class="text-gray-500 text-sm mt-4">Traveller name and gender</p>
-				<div class="grid grid-cols-12 gap-x-6">
+				<div class="grid grid-cols-12 gap-x-4 lg:gap-x-6 mt-2 lg:mt-0">
 					<input
 						type="text"
 						placeholder="First name"
-						class="border col-span-5 border-gray-300 mt-1 p-2 rounded-sm"
+						class="border col-span-6 lg:col-span-5 border-gray-300 mt-1 p-2 rounded-sm"
 						name="{index + 1}firstName"
 						value=""
 					/>
 					<input
 						type="text"
 						placeholder="Last name"
-						class="border col-span-3 border-gray-300 mt-1 p-2 rounded-sm"
+						class="border col-span-6 lg:col-span-3 border-gray-300 mt-1 p-2 rounded-sm"
 						name="{index + 1}lastName"
 						value=""
 					/>
 					<select
-						class="border text-gray-400 col-span-2 border-gray-300 mt-1 p-2 rounded-sm bg-transparent"
+						class="border text-gray-400 col-span-6 lg:col-span-2 border-gray-300 mt-1 p-2 rounded-sm bg-transparent"
 						name="{index + 1}gender"
 					>s
 						<option>Gender</option>
@@ -88,7 +88,7 @@
 						<option>F</option>
 					</select>
 					<select
-						class="border text-gray-400 col-span-2 border-gray-300 mt-1 p-2 rounded-sm bg-transparent"
+						class="border text-gray-400 col-span-6 lg:col-span-2 border-gray-300 mt-1 p-2 rounded-sm bg-transparent"
 						name="{index + 1}foodPreference"
 					>
 						<option>Food</option>

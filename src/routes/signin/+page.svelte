@@ -47,17 +47,17 @@
 	{#if isFormSubmitted}
 		<LoaderFullscreen />
 	{/if}
-	<div class="w-6/12 h-70v rounded-md grid grid-cols-11 shadow-shadow1">
-		<div class="h-full col-span-4 overflow-y-hidden">
+	<div class="w-11/12 lg:w-6/12 h-70v rounded-md grid grid-cols-12 lg:grid-cols-11 shadow-shadow1">
+		<div class="hidden lg:block h-full col-span-4 overflow-y-hidden">
 			<img
 				src="https://images.ixigo.com/rt-flight/pc/img/login/banner.png?v=1"
 				alt="poster"
 				class="h-full"
 			/>
 		</div>
-		<div class="col-span-7 p-12 h-full flex flex-col items-center justify-between">
+		<div class="col-span-12 lg:col-span-7 p-12 h-full flex flex-col items-center justify-between">
 			<form class="flex flex-col w-full" on:submit|preventDefault={handleSubmit}>
-				<h3 class="text-2xl">Login to easycruise</h3>
+				<h3 class="text-2xl">Login to <span class="text-orange2 font-bold">easycruise</span></h3>
 				<p class="text-xs text-gray-400 mt-10">Enter username</p>
 				<input
 					type="text"

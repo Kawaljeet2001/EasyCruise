@@ -5,6 +5,7 @@
 	import ReviewDetailsCompleted from './ReviewDetailsCompleted.svelte';
 	import { FlightCodeLookup } from '../../../utils/FlightCodeLookup';
 	import {ticketBookingDetails} from "../../../stores/store.js";
+	import {FLIGHT_LOGO} from "../../../utils/Constants.js"
 
 	const saveDetails = (details) => {
 		var journeyDetails = {};
@@ -34,23 +35,23 @@
 			isActive={activeSection == 'review'}
 			titleDesc={null}
 		/>
-		<div class="flex items-center mt-10">
+		<div class="flex items-center mt-10 justify-center lg:justify-start">
 			<h2 class="font-semibold">{details.details.source} -> {details.details.destination}</h2>
 			<p class="mx-6 text-gray-400">{dateInFormat2(details.depart_date)}</p>
 			{#if details.details.arrivalDay == 'next'}
-				<div class="bg-orange-100 px-2 py-0.5 rounded-sm text-xs font-medium text-gray-800">
+				<div class="hidden lg:block bg-orange-100 px-2 py-0.5 rounded-sm text-xs font-medium text-gray-800">
 					Arrives Next Day
 				</div>
 			{:else}
-				<div class="bg-green-100 px-2 py-0.5 rounded-sm text-xs font-medium text-gray-800">
+				<div class="hidden lg:block bg-green-100 px-2 py-0.5 rounded-sm text-xs font-medium text-gray-800">
 					Arrives Same Day
 				</div>
 			{/if}
 		</div>
-		<div class="grid grid-cols-10 mt-4 items-center">
+		<div class="grid grid-cols-10 mt-8 lg:mt-4 items-center">
 			<div class="col-span-2">
 				<img
-					src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/G8_2x.png"
+					src={FLIGHT_LOGO[details.details.flightDetails.company]}
 					alt="Burger"
 					class="w-8"
 				/>

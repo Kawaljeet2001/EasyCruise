@@ -24,7 +24,7 @@
 				{ withCredentials: true }
 			);
 			if (res.data) {
-				//also update the schedule by decrementing the available seats;
+				//also update the schedule by decrementing the available sats;
 				const seats = await axios.patch(
 					`http://localhost:8000/api/updateSchedule/${scheduleId}/${cabinClass}/${numberOfTravellers}`,
 					{},
@@ -32,6 +32,7 @@
 				);
 
 				if (seats.data) {
+					console.log(seats.data);
 					let pnr = res.data.pnr;
 					//set the pnr to localStorage
 					localStorage.setItem('pnr', pnr);
@@ -88,7 +89,7 @@
 {#if submitPayment == 'process'}
 	<LoaderFullscreen />
 {/if}
-<div class="col-span-5 bg-white flex flex-col justify-between px-24 py-20">
+<div class="col-span-12 lg:col-span-5 bg-white flex flex-col justify-between px-4 lg:px-24 py-20">
 	<div class="flex flex-col justify-between">
 		<h3 class="text-2xl font-bold">Order Summary</h3>
 		<div class="pt-8 pb-12 border-b border-gray-200">
@@ -113,7 +114,7 @@
 		>
 	</div>
 
-	<p class="text-xs text-gray-400">
+	<p class="text-xs text-gray-400 mt-8 lg:mt-0">
 		* All payment transactions are end to end encrypted. "Company name" does not store your payment
 		information on our servers.
 	</p>

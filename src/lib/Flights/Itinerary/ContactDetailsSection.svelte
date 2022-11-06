@@ -46,7 +46,7 @@
 		{#if activeSection == 'contact'}
 			<form class="flex flex-col" on:submit|preventDefault={handleSubmit}>
 				<p class="text-sm text-gray-500 mt-6">Mobile number</p>
-				<div class="grid grid-cols-10 gap-x-6 w-7/12 items-center ">
+				<div class="grid grid-cols-12 lg:grid-cols-10 gap-x-4 lg:gap-x-6 w-full lg:w-7/12 items-center ">
 					<input
 						type="text"
 						class="border col-span-2 border-gray-300 mt-1 p-2 rounded-sm"
@@ -56,7 +56,7 @@
 					<input
 						type="text"
 						placeholder="Mobile number"
-						class="border col-span-8 border-gray-300 mt-1 p-2 rounded-sm"
+						class="border col-span-10 lg:col-span-8 border-gray-300 mt-1 p-2 rounded-sm"
 						name="contactNo_2"
 						value=""
 					/>
@@ -65,7 +65,7 @@
 				<input
 					type="email"
 					placeholder="Email address"
-					class="border w-7/12 border-gray-300 mt-1 p-2 rounded-sm"
+					class="border w-full lg:w-7/12 border-gray-300 mt-1 p-2 rounded-sm"
 					name="contactEmail"
 					value=""
 				/>

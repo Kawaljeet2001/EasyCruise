@@ -39,7 +39,7 @@
 </script>
 
 <div class="col-span-3">
-	<div class="w-full flex flex-col justify-between h-20v border border-gray-200 rounded-sm p-6">
+	<div class="w-full fixed lg:static bottom-0 z-40 bg-gray-100 lg:bg-white left-0 lg:flex flex-col justify-between h-20v border border-gray-200 rounded-sm p-6">
 		<div class="flex flex-col">
 			<h3 class="flex items-center justify-between">
 				Total Price <span class="font-extrabold"

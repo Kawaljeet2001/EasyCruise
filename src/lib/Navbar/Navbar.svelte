@@ -16,11 +16,13 @@
 			console.log(err);
 		}
 	};
+
+
 </script>
 
 {#if isVisible}
 	<nav
-		class="bg-white py-4 px-16 w-full sticky top-0 shadow-shadow2 h-20 flex items-center justify-between z-20"
+		class="bg-white py-4 px-16 w-full sticky top-0 shadow-shadow2 h-20 hidden lg:flex items-center justify-between z-20"
 	>
 		<div>
 			<a href="/" class="text-2xl font-extrabold"><span class="text-orange-600">easycruise</span></a
@@ -33,7 +35,7 @@
 				<button
 					class="h-12 w-12 mx-4 rounded-full bg-orange1 text-white font-bold text-lg"
 					type="button"
-					on:click={() => (showHiddenMenu = !showHiddenMenu)}>{$user.data.username[0]}</button
+					on:click={() => showHiddenMenu = !showHiddenMenu}>{$user.data.username[0]}</button
 				>
 			{:else}
 				<a

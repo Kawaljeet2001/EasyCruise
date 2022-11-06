@@ -31,11 +31,11 @@
 	});
 </script>
 
-<main class="flex flex-col items-center bg-gray1 min-h-screen">
+<main class="flex flex-col items-center bg-gray1 min-h-80v lg:min-h-screen">
 	{#if loadPage}
 		{#if availableFlights.length}
-			<CheapestFareCard />
-			<div class="grid grid-cols-8 gap-x-6 w-7/12 mt-4">
+			<!-- <CheapestFareCard /> -->
+			<div class="grid grid-cols-8 gap-x-6 w-11/12 md:w-7/12 mt-4">
 				<div class="col-span-8 flex flex-col  rounded-lg">
 					{#each availableFlights as item, index}
 						<FlightJourney details={item} />
@@ -43,18 +43,18 @@
 				</div>
 			</div>
 		{:else}
-			<div class="w-6/12 mt-16 grid grid-cols-5 gap-x-2">
+			<div class="w-11/12 lg:w-6/12 mt-16 grid grid-cols-9 lg:grid-cols-5 gap-x-2 flex justify-center">
 				<div class="col-span-1 flex flex-col items-end justify-start">
 					<p class="errorText -mt-8 font-extrabold text-orange1">!</p>
 				</div>
-				<div class="col-span-4 flex flex-col">
-					<p class="text-3xl font-bold w-8/12">
+				<div class="col-span-8 lg:col-span-4 flex flex-col">
+					<p class="text-2xl lg:text-3xl font-bold w-full lg:w-8/12">
 						No flights available. Please try for a different date.
 					</p>
-					<div class="mt-4 flex items-center w-6/12">
+					<div class="mt-4 flex items-center w-10/12 lg:w-6/12">
 						<a
 							href="/"
-							class="bg-orange1 hover:bg-orange-700 rounded-md text-white font-bold px-12 py-2.5"
+							class="bg-orange1 hover:bg-orange-700 hover:bg-orange-700 rounded-md text-white font-bold px-12 py-2.5"
 							>Back to Home</a
 						>
 					</div>
