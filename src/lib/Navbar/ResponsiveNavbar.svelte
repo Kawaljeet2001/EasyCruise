@@ -2,6 +2,7 @@
 	import axios from 'axios';
 	let isVisible = true;
 	import { user } from '../../stores/store.js';
+	import { page } from '$app/stores';
 	let showHiddenMenu = false;
 	let openNavbar = false;
 	const handleLogout = async () => {
@@ -22,9 +23,9 @@
 		}
 	};
 
-    const handleOpenNavbar = () => {
-        openNavbar = !openNavbar
-    }
+	const handleOpenNavbar = () => {
+		openNavbar = !openNavbar;
+	};
 </script>
 
 {#if isVisible}
@@ -36,17 +37,36 @@
 			>
 		</div>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<img src="https://img.icons8.com/material-outlined/24/null/menu--v1.png" alt="hamburger" class="cursor-pointer" on:click={handleOpenNavbar}/>
+		<img
+			src="https://img.icons8.com/material-outlined/24/null/menu--v1.png"
+			alt="hamburger"
+			class="cursor-pointer"
+			on:click={handleOpenNavbar}
+		/>
 		{#if openNavbar}
 			<div
 				class="bg-white shadow-xl absolute top-20 w-screen flex flex-col p-6 left-0 items-center justify-end"
 			>
-				<a class="mx-4 text-lg w-full bg-gray-100 rounded-md py-2 px-4 hover:bg-gray-200" href="/"
-					>Flights</a
+				<a
+					class="py-2 px-6 text-lg w-full mx-2 rounded-md font-medium {$page.url.pathname == '/'
+						? 'bg-blue-50 text-blue-600 '
+						: 'bg-white'}"
+					href="/">Flights</a
+				>
+
+				<a
+					class="py-2 px-6 text-lg w-full mx-2 rounded-md font-medium {$page.url.pathname ==
+					'/about'
+						? 'bg-blue-50 text-blue-600 '
+						: 'bg-white'}"
+					href="/about">About</a
 				>
 				<a
-					class="mx-4 text-lg w-full bg-gray-100 rounded-md py-2 px-4 mt-2 hover:bg-gray-200"
-					href="/support">Support</a
+					class="py-2 px-6 text-lg w-full mx-2 rounded-md font-medium {$page.url.pathname ==
+					'/contact'
+						? 'bg-blue-50 text-blue-600 '
+						: 'bg-white'}"
+					href="/contact">Contact us</a
 				>
 				{#if $user}
 					<div class="w-full my-2">
