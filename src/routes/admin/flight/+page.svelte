@@ -16,7 +16,7 @@
 	};
 
 	onMount(async () => {
-		getFlights();
+		await getFlights();
 	});
 </script>
 
@@ -58,7 +58,7 @@
 						<button
 							class="rounded-md bg-orange1 hover:bg-orange-700 text-white font-extrabold flex items-center justify-center py-4 px-16 shadow-md"
 							on:click={async () => {
-								await goto('/admin/flight/vs328');
+								await goto(`/admin/flight/${details.id}`);
 							}}>View more details</button
 						>
 					</div>
