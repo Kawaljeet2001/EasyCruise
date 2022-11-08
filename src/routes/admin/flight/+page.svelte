@@ -20,6 +20,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Admin - Easycruise</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class="bg-gray-50 p-16 w-full overflow-scroll">
 	<h3 class="text-5xl font-extrabold">Flights</h3>
 	<p class="mt-2 ">List of all aircrafts and their routes.</p>

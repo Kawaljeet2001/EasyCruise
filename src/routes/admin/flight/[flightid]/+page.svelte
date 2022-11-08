@@ -8,7 +8,7 @@
 	let flightId = $page.params.flightid;
 	let flightDetails = null;
 	let flightSchedules = null;
-
+	let totalFlightEarnings = null;
 	const getFlightDetails = async (flightId) => {
 		try {
 			const res = await axios.get(`http://localhost:8000/admin/flight/${flightId}`);
@@ -17,7 +17,11 @@
 			console.log(err);
 		}
 	};
-
+	const formatPrice = (price) => {
+		var nfObject = new Intl.NumberFormat('en-US');
+		var output = nfObject.format(price);
+		return output;
+	};
 	const getFlightSchedules = async (flightId) => {
 		try {
 			const res = await axios.get(`http://localhost:8000/admin/flightschedules/${flightId}`);
@@ -27,14 +31,27 @@
 		}
 	};
 
+	const getTotalFlightEarnings = async (flightId) => {
+		try {
+			const res = await axios.get(`http://localhost:8000/admin/flightearnings/${flightId}`);
+			totalFlightEarnings = res.data;
+		} catch (err) {
+			console.log(err);
+		}
+	};
 	onMount(async () => {
 		await getFlightDetails(flightId);
 		await getFlightSchedules(flightId);
+		await getTotalFlightEarnings(flightId);
 	});
 </script>
 
+<svelte:head>
+	<title>Admin - Easycruise</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class=" w-full p-16 flex bg-gray-50">
-	<!-- This is the lulu part in the admin page -->
 	{#if flightDetails}
 		<div class="w-full grid grid-cols-12 gap-x-8">
 			<div class="flex flex-col col-span-3 bg-white rounded-md shadow-lg p-12 h-min">
@@ -84,11 +101,29 @@
 					</div>
 				</div>
 			</div>
-			{#if flightSchedules}
-				<FlightSchedulesList details={flightSchedules} {flightDetails} />
-			{:else}
-				<p>No scheudles for this flight yet!</p>
-			{/if}
+			<div class="flex flex-col col-span-9 bg-white rounded-md shadow-lg p-12 h-80v">
+				<h3 class="font-bold text-2xl">Schedules</h3>
+				<div class="flex flex-col h-full justify-between mt-6">
+					{#if flightSchedules && flightSchedules.length}
+						<div class="flex flex-col overflow-y-auto">
+							<FlightSchedulesList details={flightSchedules} {flightDetails} />
+						</div>
+						<div class="w-full flex justify-end px-6">
+							{#if totalFlightEarnings}
+								<p class="font-medium text-normal">
+									Total Revenue : <span class="text-blue-600 text-xl font-bold"
+										>&#8377; {formatPrice(totalFlightEarnings.earnings)}</span
+									>
+								</p>
+							{/if}
+						</div>
+					{:else}
+						<div class="w-full h-full flex items-center justify-center">
+							<p class="text-gray-300 text-3xl">No flights scheduled yet for this aircraft.</p>
+						</div>
+					{/if}
+				</div>
+			</div>
 		</div>
 	{/if}
 </div>

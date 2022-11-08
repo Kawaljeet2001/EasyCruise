@@ -14,18 +14,22 @@
 			console.log(err);
 		}
 	};
-    const formatPrice = (price) => {
-        var nfObject = new Intl.NumberFormat('en-US');
-        var output = nfObject.format(price);
-        return output;
-    }
-
+	const formatPrice = (price) => {
+		var nfObject = new Intl.NumberFormat('en-US');
+		var output = nfObject.format(price);
+		return output;
+	};
 
 	onMount(async () => {
 		getOverviewStats();
 	});
 </script>
 
+<svelte:head>
+	<title>Admin - Easycruise</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class=" w-full p-16 flex bg-gray-50">
 	{#if loadContent}
 		<div class="flex flex-col w-full">
@@ -60,7 +64,7 @@
 					<h3 class="text-7xl font-bold text-blue-500">&#8377; {formatPrice(stats.earnings)}</h3>
 					<p class="mt-2 text-gray-400 font-medium">Revenue generated</p>
 				</div>
-                <!-- <div class="col-span-8 bg-white shadow-lg py-8 pl-12 mt-16">
+				<!-- <div class="col-span-8 bg-white shadow-lg py-8 pl-12 mt-16">
                     ergeg
                 </div> -->
 			</div>

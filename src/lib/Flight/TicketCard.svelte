@@ -10,8 +10,8 @@
 	};
 
 	let ticketInput = {
-		from: 'New Delhi',
-		to: 'Mumbai',
+		from: '',
+		to: '',
 		class: 'Economy',
 		departureDate: new Date().toISOString().split('T')[0],
 		adults: 1

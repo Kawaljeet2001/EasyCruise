@@ -1,5 +1,7 @@
 <script>
 	import { page } from '$app/stores';
+	import iconLogo from '../../assets/elogo.png';
+
 	// $: console.log($page.url.pathname);
 </script>
 
@@ -8,9 +10,9 @@
 		class="py-4 px-16 w-full sticky top-0 shadow-shadow2 h-20 flex items-center justify-between z-50 bg-white"
 	>
 		<div class="relative ">
-			<a href="/admin" class="text-2xl font-extrabold text-orange-600"
-				>easycruise<span class="text-sm text-gray-700 font-bold absolute -bottom-3.5 right-0.5"
-					>ADMIN</span
+			<a href="/admin" class="text-2xl font-extrabold text-orange-600 flex items-center"
+				><img src={iconLogo} alt="logo" class="h-7 w-7" />asycruise<span
+					class="text-sm text-gray-700 font-bold absolute -bottom-3.5 right-0.5">ADMIN</span
 				></a
 			>
 		</div>
@@ -26,18 +28,12 @@
 				Overview
 			</a>
 			<a
-				class="py-4 pl-6 text-lg font-medium w-full {$page.url.pathname.includes("/admin/flight")
+				class="py-4 pl-6 text-lg font-medium w-full {$page.url.pathname.includes('/admin/flight')
 					? 'text-blue-500 bg-blue-50 border border-transparent'
 					: 'text-gray-400 bg-white border border-gray-50'} "
 				href="/admin/flight"
 			>
 				Flight Details
-			</a>
-			<a
-				class="py-4 pl-6 text-gray-400 font-medium w-full border border-gray-50"
-				href="/admin/gulu"
-			>
-				Earnings
 			</a>
 		</div>
 
