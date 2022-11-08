@@ -31,7 +31,11 @@
 		await getFlights();
 	});
 </script>
-
+<svelte:head>
+	<title>Flight Bookings</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <main class="flex flex-col items-center bg-gray1 min-h-80v lg:min-h-screen">
 	{#if loadPage}
 		{#if availableFlights.length}

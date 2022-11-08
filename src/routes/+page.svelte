@@ -46,17 +46,12 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Easycruise - #1 Site for booking Flight tickets</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <main class="bg-gray1 min-h-screen flex flex-col items-center justify-center ">
-	<!-- <div class="clippar w-full overflow-hidden absolute top-0 bg-red-500 h-80v">
-		<img
-			class="w-full"
-			src="https://img.happyeasygo.com/oss/ossuploadfile/advertising/2021/11/11/7b1b0a40fe39470a8166252f994d702b.jpg"
-			alt="aeroplane-background"
-		/>
-	</div>
-	<div class="h-15v z-10 flex items-center justify-center">
-		<h1 class="text-4xl text-white font-extrabold">Book Domestic & International Flight Online</h1>
-	</div> -->
 	<div class="w-11/12 lg:w-7/12 flex flex-col items-center justify-center py-12 lg:py-20 z-10">
 		<div class="flex flex-col items-center lg:items-start w-full mb-10">
 			<h1 class="text-4xl font-extrabold">Search flights</h1>
@@ -126,9 +121,3 @@
 		</div>
 	</div>
 </main>
-
-<style>
-	.clippar {
-		clip-path: ellipse(60% 50% at 50% 7%);
-	}
-</style>

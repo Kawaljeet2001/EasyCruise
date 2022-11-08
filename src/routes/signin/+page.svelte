@@ -42,7 +42,11 @@
 	//states
 	let isFormSubmitted = false;
 </script>
-
+<svelte:head>
+	<title>Easycruise - Login</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class="z-40 fixed top-0 h-screen w-full flex justify-center items-center bg-white">
 	{#if isFormSubmitted}
 		<LoaderFullscreen />

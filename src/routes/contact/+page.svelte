@@ -1,7 +1,11 @@
 <script>
 	import FaqAccordian from '../../lib/Contact/FaqAccordian.svelte';
 </script>
-
+<svelte:head>
+	<title>Contact Us</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class="min-h-80v flex flex-col items-center">
 	<div class="bg-orange1 h-40v p-6 w-full flex flex-col items-center justify-center">
 		<h2 class="text-white font-medium text-4xl text-center">Welcome to Our Support Center</h2>

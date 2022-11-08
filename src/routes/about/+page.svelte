@@ -22,7 +22,11 @@
 		}
 	];
 </script>
-
+<svelte:head>
+	<title>About Us</title>
+	<meta name="robots" content="noindex nofollow" />
+	<html lang="en" />
+</svelte:head>
 <div class="bg-gray-50 p-2 lg:p-12 h-50v lg:h-80v flex items-center justify-center">
 	<iframe
 		src="https://www.youtube.com/embed/5tAtslReYCI"
