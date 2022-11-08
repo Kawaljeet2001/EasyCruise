@@ -3,6 +3,7 @@
 	let isVisible = true;
 	import { user } from '../../stores/store.js';
 	import { page } from '$app/stores';
+	import iconLogo from '../../assets/elogo.png';
 
 	let showHiddenMenu = false;
 	const handleLogout = async () => {
@@ -29,7 +30,9 @@
 		class="bg-white py-4 px-16 w-full sticky top-0 shadow-shadow2 h-20 hidden lg:flex items-center justify-between z-20"
 	>
 		<div>
-			<a href="/" class="text-2xl font-extrabold"><span class="text-orange-600">easycruise</span></a
+			<a href="/" class="text-2xl font-extrabold flex items-center"
+				><img src={iconLogo} alt="logo" class="h-7 w-7" />
+				<span class="text-orange-600">asycruise</span></a
 			>
 		</div>
 		<div class="relative flex items-center justify-between">
@@ -39,7 +42,6 @@
 					: 'bg-white'}"
 				href="/">Flights</a
 			>
-
 			<a
 				class="py-2 px-6 text-lg mx-2 rounded-md font-medium {$page.url.pathname == '/about'
 					? 'bg-blue-50 text-blue-600 '

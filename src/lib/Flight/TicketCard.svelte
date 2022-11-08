@@ -16,6 +16,13 @@
 		departureDate: new Date().toISOString().split('T')[0],
 		adults: 1
 	};
+
+	const swapDestinations = () => {
+		let tempto = ticketInput.to;
+		let tempfrom = ticketInput.from;
+
+		ticketInput = { ...ticketInput, to: tempfrom, from: tempto };
+	};
 </script>
 
 <div class="bg-white w-full p-8 rounded-3xl shadow-lg flex flex-col">
@@ -29,7 +36,58 @@
 				/>
 				<p class="text-sm text-gray-400">DEL, India Gandhi Int"l Airport</p>
 			</div>
-			<div class="rounded-lg bg-white p-4 col-span-1 hidden lg:flex flex-col" />
+			<div
+				class="rounded-lg bg-white p-4 col-span-1 hidden lg:flex flex-col items-center justify-center"
+			>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<svg
+					width="32"
+					height="32"
+					viewBox="0 0 32 32"
+					fill="none"
+					class="cursor-pointer"
+					on:click={swapDestinations}
+					><rect width="32" height="32" rx="16" fill="white" /><g clip-path="url(#clip0_160_1650)"
+						><path
+							d="M24.1666 14.8333H7.83325"
+							stroke="#3366CC"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/><path
+							d="M7.83325 14.8333L13.6666 9"
+							stroke="#3366CC"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/><path
+							d="M7.83342 18.3335H24.1667"
+							stroke="#3366CC"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/><path
+							d="M24.1667 18.3334L18.3334 24.1667"
+							stroke="#3366CC"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/><circle
+							cx="16"
+							cy="16"
+							r="13.375"
+							stroke="#3366CC"
+							stroke-width="1.25"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/></g
+					><defs
+						><clipPath id="clip0_160_1650"
+							><rect width="28" height="28" fill="white" transform="translate(2 2)" /></clipPath
+						></defs
+					></svg
+				>
+			</div>
 			<div class="rounded-lg bg-lightBlue p-4 col-span-12 lg:col-span-5 flex flex-col mt-4 lg:mt-0">
 				<p class="text-sm text-gray-400">To</p>
 				<input
