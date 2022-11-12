@@ -15,11 +15,18 @@ example, they can use almost all kinds of popular operating systems such as MacO
 Windows.
 
 
+
+
+***For backend repository :*** *[Click here](https://github.com/Kawaljeet2001/EasyCruise-Backend)*
+
+
 ## Idea behind the project
 
-Any additional information goes here
+Over people book their airline tickets online daily. EasyCruise, is supposed to be a one stop convinient solution for everyone, to easily book their tickets, select their flight itinerary, choose the cabin class according to their comfort and seamlessly enjoy their journey, without worrying about the hassle of reservations.
 
-*For more details about the project, view this document: [Click here](https://www.google.com)*
+Hence, EasyCruise's easy and simple user experience enables the user to book their tickets and enjoy their journey.
+
+*For more details about the project, view this document: [Click here](http://#)*
 
 ## Dev Tools/Technologies
 The app includes many characteristic features:
@@ -78,24 +85,24 @@ Follow the steps to setup a developement environment for this app:
 
 - Clone this repo. Use the command, or simple download the zip file for code
 ```bash
-  git clone https://github.com/Kawaljeet2001/Artistify-Community-Platform.git
+  git clone https://github.com/Kawaljeet2001/EasyCruise.git
 ```
 
 - Setting up client dependencies
 ```bash
-  cd ./Airline-Ticket-Booking-System-Frontend 
+  cd ./EasyCruise
   yarn install or npm install
 ```
 
 - Starting the dev servers
 ```bash
-  cd ./Airline-Ticket-Booking-System-Frontend 
+  cd ./EasyCruise
   yarn dev
 ```
 
 - Build the Svelte App
 ```bash
-  cd ./Airline-Ticket-Booking-System-Frontend 
+  cd ./EasyCruise
   yarn build
 ```
     
