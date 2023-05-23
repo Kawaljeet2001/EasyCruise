@@ -26,7 +26,7 @@ Over people book their airline tickets online daily. EasyCruise, is supposed to 
 
 Hence, EasyCruise's easy and simple user experience enables the user to book their tickets and enjoy their journey.
 
-*For more details about the project, view this document: [Click here](http://#)*
+*For more details about the project, view this document: [Click here](https://github.com/Kawaljeet2001/EasyCruise/blob/master/EasyCruise%20Design%20Document.pdf)*
 
 ## Dev Tools/Technologies
 The app includes many characteristic features:
